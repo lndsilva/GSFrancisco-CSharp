@@ -8,3 +8,4 @@ C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debu
 C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.csproj.CoreCompileInputs.cache
 C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.exe
 C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.pdb
+C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.frmLogin.resources
