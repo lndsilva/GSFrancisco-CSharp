@@ -9,7 +9,7 @@ namespace GPSFrancisco
 {
     public class Conexao
     {
-        private static string conString = "Server=localhost;Port=3306;Database=dbgpsfrancisco;Uid=admin;Pwd=123456";
+        private static string conString = "Server=localhost;Port=3306;Database=dbfrancisco;Uid=root;Pwd=''";
         private static MySqlConnection con = null;
 
         public static MySqlConnection obterConexao()
