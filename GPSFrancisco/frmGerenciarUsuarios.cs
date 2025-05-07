@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics.Eventing.Reader;
 
 namespace GPSFrancisco
 {
@@ -25,6 +26,50 @@ namespace GPSFrancisco
         public frmGerenciarUsuarios()
         {
             InitializeComponent();
+            //executando o método desabilitar campos
+            desabilitarCampos();
+        }
+
+        //desabilitar campos
+        public void desabilitarCampos()
+        {
+            txtUsuario.Enabled = false;
+            txtSenha.Enabled = false;
+            txtValidaSenha.Enabled = false;
+            btnCadastrar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnLimpar.Enabled = false;
+        }
+
+        //habilitar campos
+        public void habilitarCampos()
+        {
+            txtUsuario.Enabled = true;
+            txtSenha.Enabled = true;
+            txtValidaSenha.Enabled = true;
+            btnCadastrar.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnLimpar.Enabled = true;
+            btnNovo.Enabled = false;
+            txtUsuario.Focus();
+        }
+
+        //desabilitar campos cadastrar
+        public void desabilitarCamposCadastrar()
+        {
+            txtUsuario.Enabled = false;
+            txtSenha.Enabled = false;
+            txtValidaSenha.Enabled = false;
+            btnCadastrar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnLimpar.Enabled = false;
+            btnNovo.Enabled=true;
+            txtUsuario.Clear();
+            txtSenha.Clear();
+            txtValidaSenha.Clear();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -39,6 +84,82 @@ namespace GPSFrancisco
             IntPtr hMenu = GetSystemMenu(this.Handle, false);
             int MenuCount = GetMenuItemCount(hMenu) - 1;
             RemoveMenu(hMenu, MenuCount, MF_BYCOMMAND);
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            //executando o método limpar campos
+            limparCampos();
+        }
+        //criando o método limpar campos
+        public void limparCampos()
+        {
+            txtCodigo.Clear();
+            txtUsuario.Clear();
+            txtSenha.Clear();
+            txtValidaSenha.Clear();
+            txtUsuario.Focus();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitarCampos();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text.Equals("")
+                || txtSenha.Text.Equals("")
+                || txtValidaSenha.Text.Equals(""))
+            {
+                MessageBox.Show("Favor inserir valores.",
+                    "Mensagem do sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1
+                    );
+                limparCampos();
+            }
+            else
+            {
+                if (txtSenha.Text.Length <12 || txtValidaSenha.Text.Length < 12)
+                {
+                    MessageBox.Show("A senha tem que ser igual a 12 caracteres",
+                       "Mensagem do sistema",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error,
+                      MessageBoxDefaultButton.Button1
+                      );
+                }
+                else
+                {
+                    if (txtSenha.Text.Equals(txtValidaSenha.Text))
+                    {
+                        MessageBox.Show("Cadastrado com sucesso.",
+                             "Mensagem do sistema",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1
+                            );
+                        desabilitarCamposCadastrar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("A senha não é igual.",
+                             "Mensagem do sistema",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error,
+                            MessageBoxDefaultButton.Button1
+                            );
+                        txtSenha.Clear();
+                        txtValidaSenha.Clear();
+                        txtSenha.Focus();
+                    }
+                }
+               
+
+
+            }
         }
     }
 }
