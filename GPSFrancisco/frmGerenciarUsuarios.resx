@@ -118,6 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCheckedFalse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABQElEQVRYR+2WvUoDQRhFV0jwJYytYmMR
+        MI3Gn0IrJQ9gl94XsvcB/GnjIxgLTbTVFxBtRc+E+8ESZpJ1szOx2AuHsDN35nzFLiSrUyd1rtrHLejA
+        ipbSBeka3MA7nGo5TSS/hh/xBmfajhtE03LHK5yoEi9IQvIjVeIFydLl7oXLy18gidx9aj75oSrxguTf
+        ycewVPmBKuFQasI5dLT0p3BuIXkDLuALHmFHW4VC38lvIS8fwb4qs0OxDx866BhCoSHorUN5uQvlbRjo
+        sDF3CPZD8q4qxcOhDbjXJUZwCNark1s4vAlzh+DZye+0bzxDebmFS2YOwW9Ivje5oIpwmW+IB+jB9KdW
+        rdzCpb4hPuE79xxHbuFy3xDGE8STW5D4hnDyXVXiB1l+iLRyC9ItuITFP7WyQb4K6f/L14mbLPsFcvJ4
+        59LLZFsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnChecked.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADoSURBVFhH7ZRLDoIwFEXrWtxHoQO13YJTx67FaByYuAQebMrELTgwEWvSa4jyqdo+EuEkdwAB
+        zhkAYmQwyMKYhPRelGLiTvEhM2NUri8qN2VK+sgaUZVjbBF1craINjlm34mDuzwsPnJF5mq3dLeEY+By
+        +ge5/TxWqtBTd9iJzGbh5Emu1zbgltLi5BMRRY4buyKiyrGmCBY59hoRVP7A/g63tQ+pDBHB5cA+1CNC
+        n6PIgU9E636Rg68jQsjBxxEh5cA7IoYc2Dd/VyvFYspBYwSHHLxFcMrBM6IPOUjJbCTN+5GPxEOIOxTs
+        dZ/9dMNhAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnVoltar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAABNFJREFUWEft

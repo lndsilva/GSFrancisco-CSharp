@@ -66,7 +66,7 @@ namespace GPSFrancisco
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
             btnLimpar.Enabled = false;
-            btnNovo.Enabled=true;
+            btnNovo.Enabled = true;
             txtUsuario.Clear();
             txtSenha.Clear();
             txtValidaSenha.Clear();
@@ -122,7 +122,7 @@ namespace GPSFrancisco
             }
             else
             {
-                if (txtSenha.Text.Length <12 || txtValidaSenha.Text.Length < 12)
+                if (txtSenha.Text.Length < 12 || txtValidaSenha.Text.Length < 12)
                 {
                     MessageBox.Show("A senha tem que ser igual a 12 caracteres",
                        "Mensagem do sistema",
@@ -156,9 +156,24 @@ namespace GPSFrancisco
                         txtSenha.Focus();
                     }
                 }
-               
 
 
+
+            }
+        }
+
+        private void txtValidaSenha_TextChanged(object sender, EventArgs e)
+        {
+            if (txtValidaSenha.Text.Equals(txtSenha.Text))
+            {
+                btnChecked.Visible = true;
+            }
+            else
+            {
+                if (txtValidaSenha.Text.Length == 12)
+                {
+                    btnCheckedFalse.Visible = true;
+                }
             }
         }
     }
