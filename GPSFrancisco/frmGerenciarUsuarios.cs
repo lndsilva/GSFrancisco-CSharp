@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics.Eventing.Reader;
+using MySql.Data.MySqlClient;
 
 namespace GPSFrancisco
 {
@@ -135,13 +136,26 @@ namespace GPSFrancisco
                 {
                     if (txtSenha.Text.Equals(txtValidaSenha.Text))
                     {
-                        MessageBox.Show("Cadastrado com sucesso.",
+                        if (cadatrarUsuario(txtUsuario.Text, txtSenha.Text) == 1)
+                        {
+                            MessageBox.Show("Cadastrado com sucesso.",
                              "Mensagem do sistema",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information,
                             MessageBoxDefaultButton.Button1
                             );
-                        desabilitarCamposCadastrar();
+                            desabilitarCamposCadastrar();
+                            buscarUsuariosCadastrados();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro ao cadastrar.",
+                            "Mensagem do sistema",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error,
+                           MessageBoxDefaultButton.Button1
+                           );
+                        }
                     }
                     else
                     {
@@ -175,6 +189,102 @@ namespace GPSFrancisco
                     btnCheckedFalse.Visible = true;
                 }
             }
+        }
+
+        //criar os métodos do crud da janela usuários
+
+        //método cadastrar usuário
+        public int cadatrarUsuario(string usuario, string senha)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "insert into tbUsuarios(nome,senha)values(@nome,@senha);";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = usuario;
+            comm.Parameters.Add("@senha", MySqlDbType.VarChar, 12).Value = senha;
+
+            comm.Connection = Conexao.obterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
+
+            return resp;
+        }
+
+        //buscar usuarios cadastrados
+        public void buscarUsuariosCadastrados()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select nome from tbusuarios order by nome asc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+
+            cbbUsuariosCadastrados.Items.Clear();
+
+            while (DR.Read())
+            {
+                cbbUsuariosCadastrados.Items.Add(DR.GetString(0));
+            }
+
+            Conexao.fecharConexao();
+        }
+
+        //método alterar usuário
+        public void alterarUsuario(string usuario, string senha)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbUsuarios set nome = @nome, senha = @senha where codUsu = @codUsu;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = usuario;
+            comm.Parameters.Add("@senha", MySqlDbType.VarChar, 12).Value = senha;
+            //comm.Parameters.Add("@codigo",MySqlDbType.VarChar,12).Value = codigo;
+
+            comm.Connection = Conexao.obterConexao();
+
+            Conexao.fecharConexao();
+
+        }
+
+        //busca usuário por código
+        public void buscaUsuarioCodigo()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbusuarios where codusu = 1;";
+            comm.CommandType = CommandType.Text;           
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            
+            DR.Read();
+
+            txtCodigo.Text = DR.GetString(0);
+            txtUsuario.Text = DR.GetString(1);
+            txtSenha.Text = DR.GetString(2);
+
+            Conexao.fecharConexao();
+
+        }
+
+
+
+        private void cbbUsuariosCadastrados_Click(object sender, EventArgs e)
+        {
+            buscarUsuariosCadastrados();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciarUsuarios));
             this.gpbInformacoesUsuarios = new System.Windows.Forms.GroupBox();
+            this.cbbUsuariosCadastrados = new System.Windows.Forms.ComboBox();
+            this.lblUsuariosCadastrados = new System.Windows.Forms.Label();
+            this.btnCheckedFalse = new System.Windows.Forms.Button();
             this.btnChecked = new System.Windows.Forms.Button();
             this.txtValidaSenha = new System.Windows.Forms.TextBox();
             this.lblValidaSenha = new System.Windows.Forms.Label();
@@ -47,13 +50,14 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.btnCheckedFalse = new System.Windows.Forms.Button();
             this.gpbInformacoesUsuarios.SuspendLayout();
             this.pnlCRUD.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbInformacoesUsuarios
             // 
+            this.gpbInformacoesUsuarios.Controls.Add(this.cbbUsuariosCadastrados);
+            this.gpbInformacoesUsuarios.Controls.Add(this.lblUsuariosCadastrados);
             this.gpbInformacoesUsuarios.Controls.Add(this.btnCheckedFalse);
             this.gpbInformacoesUsuarios.Controls.Add(this.btnChecked);
             this.gpbInformacoesUsuarios.Controls.Add(this.txtValidaSenha);
@@ -65,14 +69,43 @@
             this.gpbInformacoesUsuarios.Controls.Add(this.txtCodigo);
             this.gpbInformacoesUsuarios.Controls.Add(this.lblCodigo);
             this.gpbInformacoesUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpbInformacoesUsuarios.Location = new System.Drawing.Point(16, 15);
-            this.gpbInformacoesUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.gpbInformacoesUsuarios.Location = new System.Drawing.Point(12, 12);
             this.gpbInformacoesUsuarios.Name = "gpbInformacoesUsuarios";
-            this.gpbInformacoesUsuarios.Padding = new System.Windows.Forms.Padding(4);
-            this.gpbInformacoesUsuarios.Size = new System.Drawing.Size(1135, 391);
+            this.gpbInformacoesUsuarios.Size = new System.Drawing.Size(851, 318);
             this.gpbInformacoesUsuarios.TabIndex = 0;
             this.gpbInformacoesUsuarios.TabStop = false;
             this.gpbInformacoesUsuarios.Text = "Informações do usuário";
+            // 
+            // cbbUsuariosCadastrados
+            // 
+            this.cbbUsuariosCadastrados.FormattingEnabled = true;
+            this.cbbUsuariosCadastrados.Location = new System.Drawing.Point(550, 73);
+            this.cbbUsuariosCadastrados.Name = "cbbUsuariosCadastrados";
+            this.cbbUsuariosCadastrados.Size = new System.Drawing.Size(204, 28);
+            this.cbbUsuariosCadastrados.TabIndex = 16;
+            this.cbbUsuariosCadastrados.Click += new System.EventHandler(this.cbbUsuariosCadastrados_Click);
+            // 
+            // lblUsuariosCadastrados
+            // 
+            this.lblUsuariosCadastrados.AutoSize = true;
+            this.lblUsuariosCadastrados.Location = new System.Drawing.Point(550, 45);
+            this.lblUsuariosCadastrados.Name = "lblUsuariosCadastrados";
+            this.lblUsuariosCadastrados.Size = new System.Drawing.Size(164, 20);
+            this.lblUsuariosCadastrados.TabIndex = 15;
+            this.lblUsuariosCadastrados.Text = "Usuários cadastrados";
+            // 
+            // btnCheckedFalse
+            // 
+            this.btnCheckedFalse.FlatAppearance.BorderSize = 0;
+            this.btnCheckedFalse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckedFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckedFalse.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckedFalse.Image")));
+            this.btnCheckedFalse.Location = new System.Drawing.Point(454, 225);
+            this.btnCheckedFalse.Name = "btnCheckedFalse";
+            this.btnCheckedFalse.Size = new System.Drawing.Size(35, 24);
+            this.btnCheckedFalse.TabIndex = 14;
+            this.btnCheckedFalse.UseVisualStyleBackColor = true;
+            this.btnCheckedFalse.Visible = false;
             // 
             // btnChecked
             // 
@@ -80,10 +113,9 @@
             this.btnChecked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChecked.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChecked.Image = ((System.Drawing.Image)(resources.GetObject("btnChecked.Image")));
-            this.btnChecked.Location = new System.Drawing.Point(605, 277);
-            this.btnChecked.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChecked.Location = new System.Drawing.Point(454, 225);
             this.btnChecked.Name = "btnChecked";
-            this.btnChecked.Size = new System.Drawing.Size(47, 30);
+            this.btnChecked.Size = new System.Drawing.Size(35, 24);
             this.btnChecked.TabIndex = 13;
             this.btnChecked.UseVisualStyleBackColor = true;
             this.btnChecked.Visible = false;
@@ -91,82 +123,74 @@
             // txtValidaSenha
             // 
             this.txtValidaSenha.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.txtValidaSenha.Location = new System.Drawing.Point(336, 277);
-            this.txtValidaSenha.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValidaSenha.Location = new System.Drawing.Point(252, 225);
             this.txtValidaSenha.MaxLength = 12;
             this.txtValidaSenha.Name = "txtValidaSenha";
             this.txtValidaSenha.PasswordChar = 'l';
-            this.txtValidaSenha.Size = new System.Drawing.Size(261, 30);
+            this.txtValidaSenha.Size = new System.Drawing.Size(197, 25);
             this.txtValidaSenha.TabIndex = 4;
             this.txtValidaSenha.TextChanged += new System.EventHandler(this.txtValidaSenha_TextChanged);
             // 
             // lblValidaSenha
             // 
             this.lblValidaSenha.AutoSize = true;
-            this.lblValidaSenha.Location = new System.Drawing.Point(336, 242);
-            this.lblValidaSenha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblValidaSenha.Location = new System.Drawing.Point(252, 197);
             this.lblValidaSenha.Name = "lblValidaSenha";
-            this.lblValidaSenha.Size = new System.Drawing.Size(132, 25);
+            this.lblValidaSenha.Size = new System.Drawing.Size(106, 20);
             this.lblValidaSenha.TabIndex = 6;
             this.lblValidaSenha.Text = "Validar senha";
             // 
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.txtSenha.Location = new System.Drawing.Point(27, 277);
-            this.txtSenha.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSenha.Location = new System.Drawing.Point(20, 225);
             this.txtSenha.MaxLength = 12;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = 'l';
-            this.txtSenha.Size = new System.Drawing.Size(261, 30);
+            this.txtSenha.Size = new System.Drawing.Size(197, 25);
             this.txtSenha.TabIndex = 3;
             // 
             // lblSenha
             // 
             this.lblSenha.AutoSize = true;
-            this.lblSenha.Location = new System.Drawing.Point(27, 242);
-            this.lblSenha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSenha.Location = new System.Drawing.Point(20, 197);
             this.lblSenha.Name = "lblSenha";
-            this.lblSenha.Size = new System.Drawing.Size(70, 25);
+            this.lblSenha.Size = new System.Drawing.Size(56, 20);
             this.lblSenha.TabIndex = 4;
             this.lblSenha.Text = "Senha";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(27, 183);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuario.Location = new System.Drawing.Point(20, 149);
             this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(261, 30);
+            this.txtUsuario.Size = new System.Drawing.Size(197, 26);
             this.txtUsuario.TabIndex = 2;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(27, 149);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(20, 121);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(79, 25);
+            this.lblUsuario.Size = new System.Drawing.Size(64, 20);
             this.lblUsuario.TabIndex = 2;
             this.lblUsuario.Text = "Usuário";
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(27, 90);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.Location = new System.Drawing.Point(20, 73);
             this.txtCodigo.MaxLength = 5;
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(132, 30);
+            this.txtCodigo.Size = new System.Drawing.Size(100, 26);
             this.txtCodigo.TabIndex = 1;
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(27, 55);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Location = new System.Drawing.Point(20, 45);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(75, 25);
+            this.lblCodigo.Size = new System.Drawing.Size(59, 20);
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Código";
             // 
@@ -180,20 +204,18 @@
             this.pnlCRUD.Controls.Add(this.btnAlterar);
             this.pnlCRUD.Controls.Add(this.btnCadastrar);
             this.pnlCRUD.Controls.Add(this.btnNovo);
-            this.pnlCRUD.Location = new System.Drawing.Point(4, 603);
-            this.pnlCRUD.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCRUD.Location = new System.Drawing.Point(3, 490);
             this.pnlCRUD.Name = "pnlCRUD";
-            this.pnlCRUD.Size = new System.Drawing.Size(1156, 80);
+            this.pnlCRUD.Size = new System.Drawing.Size(867, 65);
             this.pnlCRUD.TabIndex = 5;
             // 
             // btnVoltar
             // 
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.Image = ((System.Drawing.Image)(resources.GetObject("btnVoltar.Image")));
-            this.btnVoltar.Location = new System.Drawing.Point(992, 14);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Location = new System.Drawing.Point(744, 11);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(161, 52);
+            this.btnVoltar.Size = new System.Drawing.Size(121, 42);
             this.btnVoltar.TabIndex = 12;
             this.btnVoltar.Text = "&Voltar";
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -205,10 +227,9 @@
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
-            this.btnLimpar.Location = new System.Drawing.Point(828, 14);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpar.Location = new System.Drawing.Point(621, 11);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(161, 52);
+            this.btnLimpar.Size = new System.Drawing.Size(121, 42);
             this.btnLimpar.TabIndex = 11;
             this.btnLimpar.Text = "&Limpar";
             this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -220,10 +241,9 @@
             // 
             this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
-            this.btnPesquisar.Location = new System.Drawing.Point(663, 14);
-            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisar.Location = new System.Drawing.Point(497, 11);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(161, 52);
+            this.btnPesquisar.Size = new System.Drawing.Size(121, 42);
             this.btnPesquisar.TabIndex = 10;
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -234,10 +254,9 @@
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(499, 14);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Location = new System.Drawing.Point(374, 11);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(161, 52);
+            this.btnExcluir.Size = new System.Drawing.Size(121, 42);
             this.btnExcluir.TabIndex = 9;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -248,24 +267,23 @@
             // 
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
-            this.btnAlterar.Location = new System.Drawing.Point(336, 14);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Location = new System.Drawing.Point(252, 11);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(161, 52);
+            this.btnAlterar.Size = new System.Drawing.Size(121, 42);
             this.btnAlterar.TabIndex = 8;
             this.btnAlterar.Text = "&Alterar";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnCadastrar
             // 
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrar.Image")));
-            this.btnCadastrar.Location = new System.Drawing.Point(172, 14);
-            this.btnCadastrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCadastrar.Location = new System.Drawing.Point(129, 11);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(161, 52);
+            this.btnCadastrar.Size = new System.Drawing.Size(121, 42);
             this.btnCadastrar.TabIndex = 7;
             this.btnCadastrar.Text = "&Cadastrar";
             this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -277,10 +295,9 @@
             // 
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = ((System.Drawing.Image)(resources.GetObject("btnNovo.Image")));
-            this.btnNovo.Location = new System.Drawing.Point(5, 14);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Location = new System.Drawing.Point(4, 11);
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(161, 52);
+            this.btnNovo.Size = new System.Drawing.Size(121, 42);
             this.btnNovo.TabIndex = 6;
             this.btnNovo.Text = "&Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -288,30 +305,15 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // btnCheckedFalse
-            // 
-            this.btnCheckedFalse.FlatAppearance.BorderSize = 0;
-            this.btnCheckedFalse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckedFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckedFalse.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckedFalse.Image")));
-            this.btnCheckedFalse.Location = new System.Drawing.Point(605, 277);
-            this.btnCheckedFalse.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCheckedFalse.Name = "btnCheckedFalse";
-            this.btnCheckedFalse.Size = new System.Drawing.Size(47, 30);
-            this.btnCheckedFalse.TabIndex = 14;
-            this.btnCheckedFalse.UseVisualStyleBackColor = true;
-            this.btnCheckedFalse.Visible = false;
-            // 
             // frmGerenciarUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 690);
+            this.ClientSize = new System.Drawing.Size(878, 561);
             this.Controls.Add(this.pnlCRUD);
             this.Controls.Add(this.gpbInformacoesUsuarios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmGerenciarUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -345,5 +347,7 @@
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnChecked;
         private System.Windows.Forms.Button btnCheckedFalse;
+        private System.Windows.Forms.ComboBox cbbUsuariosCadastrados;
+        private System.Windows.Forms.Label lblUsuariosCadastrados;
     }
 }
