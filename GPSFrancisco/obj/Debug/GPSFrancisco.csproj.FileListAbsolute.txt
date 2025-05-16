@@ -44,3 +44,4 @@ C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\bin\Debu
 C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFranc.6682C739.Up2Date
 C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.frmMenuPrincipal.resources
 C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.frmGerenciarUsuarios.resources
+C:\Users\laercio.nsilva\Documents\Visual Studio 2022\TDS01\GPSFrancisco\obj\Debug\GPSFrancisco.frmPesquisarUsuario.resources
