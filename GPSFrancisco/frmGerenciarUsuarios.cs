@@ -30,6 +30,14 @@ namespace GPSFrancisco
             //executando o método desabilitar campos
             desabilitarCampos();
         }
+        
+        public frmGerenciarUsuarios(string nome)
+        {
+            InitializeComponent();
+            //executando o método desabilitar campos
+            desabilitarCampos();
+            txtUsuario.Text = nome;
+        }
 
         //desabilitar campos
         public void desabilitarCampos()
@@ -258,13 +266,13 @@ namespace GPSFrancisco
         {
             MySqlCommand comm = new MySqlCommand();
             comm.CommandText = "select * from tbusuarios where codusu = 1;";
-            comm.CommandType = CommandType.Text;           
+            comm.CommandType = CommandType.Text;
 
             comm.Connection = Conexao.obterConexao();
 
             MySqlDataReader DR;
             DR = comm.ExecuteReader();
-            
+
             DR.Read();
 
             txtCodigo.Text = DR.GetString(0);
@@ -285,6 +293,13 @@ namespace GPSFrancisco
         private void btnAlterar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            frmPesquisarUsuario abrir = new frmPesquisarUsuario();
+            abrir.Show();
+            this.Hide();
         }
     }
 }

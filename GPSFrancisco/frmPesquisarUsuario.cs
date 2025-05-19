@@ -48,8 +48,7 @@ namespace GPSFrancisco
             DR = comm.ExecuteReader();
             DR.Read();
 
-            ltbPesquisar.Items.Add(DR.GetInt32(0) + " - " + DR.GetString(1) + " - " + DR.GetString(2));
-
+            ltbPesquisar.Items.Add(DR.GetString(1));
 
             Conexao.fecharConexao();
 
@@ -68,8 +67,7 @@ namespace GPSFrancisco
             DR = comm.ExecuteReader();
             while (DR.Read())
             {
-                ltbPesquisar.Items.Add(DR.GetInt32(0)
-                    + " - " + DR.GetString(1) + " - " + DR.GetString(2));
+                ltbPesquisar.Items.Add(DR.GetString(1));
             }
 
             Conexao.fecharConexao();
@@ -96,7 +94,7 @@ namespace GPSFrancisco
                         txtDescricao.Clear();
                         txtDescricao.Focus();
                     }
-                    
+
                 }
                 else if (rdbNome.Checked && !txtDescricao.Text.Equals(""))
                 {
@@ -132,6 +130,15 @@ namespace GPSFrancisco
                 txtDescricao.Focus();
 
             }
+        }
+
+        private void ltbPesquisar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nome = ltbPesquisar.SelectedItem.ToString();
+
+            frmGerenciarUsuarios abrir = new frmGerenciarUsuarios(nome);
+            abrir.Show();
+            this.Hide();
         }
     }
 }
