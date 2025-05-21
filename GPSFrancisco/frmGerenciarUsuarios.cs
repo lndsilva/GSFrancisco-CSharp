@@ -38,7 +38,7 @@ namespace GPSFrancisco
             desabilitarCampos();
             txtUsuario.Text = nome;
             buscaUsuarioExistente(txtUsuario.Text);
-            
+
         }
 
         //desabilitar campos
@@ -260,22 +260,48 @@ namespace GPSFrancisco
         }
 
         //método alterar usuário
-        public void alterarUsuario(string usuario, string senha)
+        public int alterarUsuario(string usuario, string senha, int codUsu)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tbUsuarios set nome = @nome, senha = @senha where codUsu = @codUsu;";
+            comm.CommandText = "update tbUsuarios set nome = @nome, senha = @senha where codUsu = " + codUsu;
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = usuario;
             comm.Parameters.Add("@senha", MySqlDbType.VarChar, 12).Value = senha;
-            //comm.Parameters.Add("@codigo",MySqlDbType.VarChar,12).Value = codigo;
 
             comm.Connection = Conexao.obterConexao();
 
+            int resp = comm.ExecuteNonQuery();
+
             Conexao.fecharConexao();
 
+            return resp;
+
         }
+
+        //excluir usuário
+        public int excluirUsuario(int codUsu)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbUsuarios where codusu = @codusu;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codusu", MySqlDbType.Int32).Value = codUsu;
+
+            comm.Connection = Conexao.obterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
+
+            desabilitarCampos();
+            limparCampos();
+
+            return resp;
+        }
+
 
         //busca usuário por código
         public void buscaUsuarioCodigo()
@@ -331,7 +357,26 @@ namespace GPSFrancisco
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-
+            if (alterarUsuario(txtUsuario.Text, txtSenha.Text, Convert.ToInt32(txtCodigo.Text)) == 1)
+            {
+                MessageBox.Show("Usuário alterado com sucesso.",
+                    "Mensagem do sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                    );
+                desabilitarCampos();
+                limparCampos();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao alterar.",
+                    "Mensagem do sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1
+                    );
+            }
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -339,6 +384,39 @@ namespace GPSFrancisco
             frmPesquisarUsuario abrir = new frmPesquisarUsuario();
             abrir.Show();
             this.Hide();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("Deseja excluir?",
+                "Mensagem do sistema",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (resp == DialogResult.Yes)
+            {
+                if (excluirUsuario(Convert.ToInt32(txtCodigo.Text)) == 1)
+                {
+                    MessageBox.Show("Usuário excluído com sucesso.",
+                "Mensagem do sistema",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao excluir.",
+                "Mensagem do sistema",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1);
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 }
