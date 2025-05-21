@@ -30,13 +30,15 @@ namespace GPSFrancisco
             //executando o método desabilitar campos
             desabilitarCampos();
         }
-        
+
         public frmGerenciarUsuarios(string nome)
         {
             InitializeComponent();
             //executando o método desabilitar campos
             desabilitarCampos();
             txtUsuario.Text = nome;
+            buscaUsuarioExistente(txtUsuario.Text);
+            
         }
 
         //desabilitar campos
@@ -79,6 +81,20 @@ namespace GPSFrancisco
             txtUsuario.Clear();
             txtSenha.Clear();
             txtValidaSenha.Clear();
+        }
+
+        //habilitar campos usuarios existentes
+        public void habilitarCamposUsuarioExistente()
+        {
+            txtUsuario.Enabled = true;
+            txtSenha.Enabled = true;
+            txtValidaSenha.Enabled = true;
+            btnCadastrar.Enabled = false;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnLimpar.Enabled = false;
+            btnNovo.Enabled = false;
+            txtUsuario.Focus();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -281,6 +297,29 @@ namespace GPSFrancisco
 
             Conexao.fecharConexao();
 
+        }
+        //Busca usuário pesquisado e existente
+        public void buscaUsuarioExistente(string usuario)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbUsuarios where nome = @nome;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = usuario;
+
+            comm.Connection = Conexao.obterConexao();
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            txtUsuario.Text = DR.GetString(1);
+            txtSenha.Text = DR.GetString(2);
+
+            Conexao.fecharConexao();
+
+            habilitarCamposUsuarioExistente();
         }
 
 
